@@ -283,6 +283,19 @@ public class EasyMath {
         double decimalPart = a - integer;
         return (int) (a + decimalPart);
     }
+    //the two methods below return a boolean value depending on whether a is odd or even
+    public static boolean isOdd(int a) {
+        if(a % 2 == 0) {
+            return true;
+        }
+        return false;
+    }
+    public static boolean isEven(int a) {
+        if(a % 2 == 0) {
+            return false;
+        }
+        return true;
+    }
     //returns the average of numbers
     public static double average(double[] numbers) {
         double sum = 0;
@@ -291,6 +304,7 @@ public class EasyMath {
         }
         return sum/numbers.length;
     }
+    //returns the value that is repeated the most in the numbers array
     public static double mode(double[] numbers) {
         Arrays.sort(numbers);
         double mode = numbers[0];
@@ -308,6 +322,17 @@ public class EasyMath {
             }
         }
         return mode;
+    }
+    public static double median(double[] numbers) {
+        Arrays.sort(numbers);
+        int numbersBelow;
+        if(isOdd(numbers.length)) {
+            numbersBelow = numbers.length / 2 - 1;
+            double[] numbersInTheMiddle = {numbers[numbersBelow],numbers[numbersBelow + 1]};
+            return average(numbersInTheMiddle);
+        }
+        numbersBelow = numbers.length / 2;
+        return numbers[(int) numbersBelow];
     }
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //                                                              GEOMETRY                                                                                       //
